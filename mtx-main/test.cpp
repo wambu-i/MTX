@@ -26,9 +26,12 @@ int main() {
 	//filesystem::path entry = "/home/wambui/MTX/mtx-main";
 	sort->temp = sort->get_last_accessed_time(*sort);
 
+	Logger *l = new Logger("test");
 	std::cout << "File name: " << sort->temp->location << std::endl;
 	//std::cout << "Accessed: " << sort->temp->date << std::endl;
 	std::cout << "Accessed on: " << sort->temp->accessed << std::endl;
+	auto logger = l->return_logger();
+	logger->info("Hello, this is a test");
 
 	return 0;
 }

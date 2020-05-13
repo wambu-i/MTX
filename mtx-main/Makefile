@@ -2,7 +2,7 @@ CXX:=g++
 
 OUTPUT:=mtx
 DEBUG:=dmtx
-OBJECTS:=config.o directories.o globals.o sorting.o test.o
+OBJECTS:=config.o directories.o globals.o sorting.o logger.o test.o
 
 LOCATION:=$(shell pwd)
 
@@ -11,8 +11,8 @@ DBGOUT:=$(DBGDIR)/$(OUTPUT)
 DBGOBJS:=$(addprefix $(DBGDIR)/, $(OBJECTS))
 
 CXXFLAGS:=-std=c++17  -Wall -Wextra 
-INCLUDE:=-I/usr/include/nlohmann -I$(LOCATION)/include/ -I/usr/include/spdlog
-LIBRARIES:=-lstdc++fs -lpthread
+INCLUDE:=-I/usr/include/nlohmann -I$(LOCATION)/include/
+LIBRARIES:=-lstdc++fs -lpthread -lspdlog
 DFLAGS:=$(CXXFLAGS) -DDEBUG -g -O0
 
 RELDIR:= release
