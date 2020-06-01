@@ -43,7 +43,7 @@ FILE_OBJ *Config::construct_file_entry(std::string location) {
 }
 
 void Config::create_entries(Sorting *sort, Directories *dir){
-    std::vector<file_info> *temp = sort->create_info(dir->dirs);
+    std::vector<file_info> *temp = sort->create_info();
     FILE_OBJ *tmp;
     for (auto &file: *temp) {
         tmp = construct_file_entry(file.location);

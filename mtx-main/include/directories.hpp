@@ -11,6 +11,7 @@ namespace filesystem = std::experimental::filesystem;
 class Directories: public Globals {
 	public:
 		Directories();
+		Directories(filesystem::path *);
 		~Directories();
 		filesystem::path to_follow;
 		std::vector<filesystem::directory_entry> *dirs;

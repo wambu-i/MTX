@@ -9,7 +9,7 @@
 Logger::Logger(std::string s): _type(s) {}
 
 Logger::~Logger() {
-    spdlog::drop_all();
+	spdlog::drop_all();
 }
 
 std::shared_ptr<spdlog::logger> Logger::create_logger() {
@@ -26,7 +26,6 @@ std::shared_ptr<spdlog::logger> Logger::create_logger() {
 				sink->set_level(spdlog::level::info);
 				logger = std::make_shared<spdlog::logger>(_type, sink);
 			#endif
-			std::cout << "Type - " << _type << std::endl;
 			spdlog::register_logger(logger);
 			logger->info("Created logger for {}", _type);
 			return logger;

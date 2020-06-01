@@ -10,7 +10,7 @@ DBGDIR:=debug
 DBGOUT:=$(DBGDIR)/$(OUTPUT)
 DBGOBJS:=$(addprefix $(DBGDIR)/, $(OBJECTS))
 
-CXXFLAGS:=-std=c++17  -Wall -Wextra 
+CXXFLAGS:=-std=c++17  -Wall -Wextra -fno-elide-constructors
 INCLUDE:=-I/usr/include/nlohmann -I$(LOCATION)/include/
 LIBRARIES:=-lstdc++fs -lpthread -lspdlog
 DFLAGS:=$(CXXFLAGS) -DDEBUG -g -O0

@@ -3,11 +3,10 @@
 #include <iomanip>
 #include <fstream>
 
-/* Directories::Directories(filesystem::path *p):
-    base(p) {
-	to_follow = return_absolute_path(base);
+Directories::Directories(filesystem::path *p): base(p) {
+	to_follow = return_absolute_path(*base);
 	sorted_entries(to_follow);
-} */
+}
 
 Directories::Directories() {
 	params = new Globals;
