@@ -3,30 +3,44 @@
 #include <iostream>
 #include <algorithm>
 
-#define LOG() std::cout << __PRETTY_FUNCTION__ << std::endl
+//#define LOG() std::cout << __PRETTY_FUNCTION__ << std::endl
 
-Sorting::Sorting(std::string &s): p(new std::string(s)) {}
+Sorting::Sorting(std::string &s): p(new std::string(s)) {
+	Logger *l = new Logger("sorting");
+	auto _log = l->return_logger();
+}
 
 Sorting::Sorting(const Sorting &sort): path(new filesystem::path(*sort.p)) {
+/*     auto l = new Logger("sorting");
+    _log = l->return_logger("sorting");
+    auto _log = l->return_logger("sorting"); */
+/*     auto _log = l->return_logger("sorting"); */
+/*    auto _log = nullptr;
+    if (_log)
+	_log->warn("Creating a filesystem path");
+    else{
 	std::cout << "Creating a filesystem path" << std::endl;
 	std::cout << path << std::endl;
+    }
+    //ss_log->info("Hello from here!"); */
+    std::cout << "Creating a filesystem path" << std::endl;
+    std::cout << path << std::endl;
 }
 
 Sorting::~Sorting(){
-    LOG();
     delete p;
     delete temp;
     delete path;
 }
 
 file_info *Sorting::get_last_accessed_time(Sorting s) {
-	file_info *file = new file_info;
-	std::string name = filesystem::canonical(*s.path);
-	std::cout << name << std::endl;
-	stat(name.c_str(), &file_data);
-	file->location = name;
-	file->accessed = file_data.st_atime;
-	file->accessed_on = get_access_date(file_data.st_atime);
+    file_info *file = new file_info;
+    std::string name = filesystem::canonical(*s.path);
+    std::cout << name << std::endl;
+    stat(name.c_str(), &file_data);
+    file->location = name;
+    file->accessed = file_data.st_atime;
+    file->accessed_on = get_access_date(file_data.st_atime);
     return file;
 }
 
@@ -64,3 +78,9 @@ std::time_t Sorting::return_time() {
 bool Sorting::compare(const file_info &a, const file_info &b) {
     return a.accessed > b.accessed;
 }
+
+//std::shared_ptr<logger::logger> Sorting::create_log(std::string name) {
+//    auto *inst = new Logger(name);
+//    auto log = inst->return_logger(name);
+//    return log;
+//}
